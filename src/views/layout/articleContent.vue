@@ -81,11 +81,11 @@ export default {
 #contentWrap {
   position: relative;
   margin-left: 210px;
-  transition: margin-left 0.3s;
   min-height: 100%;
   background-color: @backColor;
+  transition: margin-left .3s;
   &.hiddenSide {
-    margin-left: 64px;
+    margin-left: 58px;
   }
   .header {
     margin-bottom: 3px;
