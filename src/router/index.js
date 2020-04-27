@@ -4,7 +4,7 @@ import login from '@/views/login.vue'
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/login',
     name: 'login',
@@ -16,7 +16,12 @@ Vue.use(VueRouter)
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "home" */ '@/views/home.vue')
+    component: () => import(/* webpackChunkName: "home" */ '@/views/home.vue'),
+    children: [{
+      path: '/table',
+      name: 'table',
+      component:  () => import(/* webpackChunkName: "table" */ '@/views/table/index.vue')
+    }]
   }
 ]
 

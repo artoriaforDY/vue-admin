@@ -40,6 +40,9 @@
         </el-breadcrumb>
       </div>
     </div>
+    <transition name="fade-transform" mode="out-in">
+      <router-view :key="key" />
+    </transition>
   </article>
 </template>
 <script>
@@ -51,6 +54,11 @@ export default {
     collapse: {
       type: Boolean,
       default: false
+    }
+  },
+  computed:{
+    key(){
+      return this.$route.path
     }
   },
   methods: {
