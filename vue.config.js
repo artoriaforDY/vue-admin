@@ -18,15 +18,15 @@ module.exports = {
 			warnings: false,
 			errors: true
 		},
-		proxy: {
-			'/api/': {
-			  target: 'http://www.apidemo.com/',
-			  changeOrigin: true,
-			  pathRewrite: {
-				'^/api/': ''          
-			  }
-			}
-		  }
+		// proxy: {
+		// 	'/api/': {
+		// 		target: 'http://www.apidemo.com/',
+		// 		changeOrigin: true,
+		// 		pathRewrite: {
+		// 			'^/': ''
+		// 		}
+		// 	}
+		// }
 		//before: require('./mock/mock-server.js')
 	},
 	configureWebpack: {
