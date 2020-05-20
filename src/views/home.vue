@@ -1,7 +1,7 @@
 <template>
 	<div id="mainBody">
 		<aside-nav></aside-nav>
-		<article-content></article-content>
+		<article-content :collapse='false'></article-content>
 	</div>
 </template>
 <script>

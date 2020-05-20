@@ -8,7 +8,10 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: login
+    component: login,
+	meta:{
+		title:'登录'
+	}
   },
   {
     path: '/',
@@ -20,7 +23,10 @@ const routes = [
     children: [{
       path: '/table',
       name: 'table',
-      component:  () => import(/* webpackChunkName: "table" */ '@/views/table/index.vue')
+      component:  () => import(/* webpackChunkName: "table" */ '@/views/table/index.vue'),
+	  meta:{
+	  	title:'表格页面'
+	  }
     }]
   }
 ]

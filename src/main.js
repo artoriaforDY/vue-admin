@@ -2,18 +2,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import ElementUI from 'element-ui';
+import ElementUI from 'element-ui'
 import Mock from '@/mock/index.js'
-import axios from 'axios';
-Vue.prototype.$axios = axios;
-import 'element-ui/lib/theme-chalk/index.css';
+import axios from 'axios'
+Vue.prototype.$axios = axios
+import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
-
-Mock.startMock();
+import componentList from './components/index.js'
 
 Vue.config.productionTip = false
 
-axios.defaults.baseURL = 'http://www.apidemo.com/api';
+axios.defaults.baseURL = '/';
 axios.defaults.headers.common['Authorization'] = Math.random().toString(30).substr(2);
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 

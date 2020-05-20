@@ -1,31 +1,24 @@
-import Mock from 'mockjs'
+// 首先引入Mock
+const Mock = require('mockjs');
 
-import getTable from './getTable'
+// 设置拦截ajax请求的相应时间
+Mock.setup({
+  timeout: '200-600'
+});
 
-export default {
-	startMock(){
-		// 设置所有ajax请求的超时时间，模拟网络传输耗时
-		Mock.setup({
-		    timeout: 0-300
-		})
-		//在index.js中引入数据
-		Mock.mock('/getTable/index', 'get', getTable.tableData);
-	}
-}
+let configArray = [];
 
-// let configArray = [];
+// 使用webpack的require.context()遍历所有mock文件
+const files = require.context('.', true, /\.js$/);
+files.keys().forEach((key) => {
+  if (key === './index.js') return;//排除自己
+  configArray = configArray.concat(files(key).default);
+});
 
-// // 使用webpack的require.context()遍历所有mock文件
-// const files = require.context('.', true, /\.js$/);
-// files.keys().forEach((key) => {
-//   if (key === './index.js') return;
-//   configArray = configArray.concat(files(key).default);
-// });
-
-// // 注册所有的mock服务
-// configArray.forEach((item) => {
-//   for (let [path, target] of Object.entries(item)) {
-//     let protocol = path.split('|');
-//     Mock.mock(new RegExp('^' + protocol[1]), protocol[0], target);
-//   }
-// });
+// 注册所有的mock服务
+configArray.forEach((item) => {
+  for (let [path, target] of Object.entries(item)) {
+    let protocol = path.split('|');
+    Mock.mock(new RegExp('^' + protocol[1]), protocol[0], target);
+  }
+});
